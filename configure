@@ -64,14 +64,17 @@ my @modules = (
     [http_form_input => 'form-input-nginx-module'],
     [http_encrypted_session => 'encrypted-session-nginx-module'],
     [http_drizzle => 'drizzle-nginx-module', 'disabled'],
-    [http_postgres => 'ngx_postgres', 'disabled'],
-    [http_srcache => 'srcache-nginx-module'],
+    [http_postgres => 'ngx_postgres'],
     [http_lua => 'ngx_lua'],
     [http_headers_more => 'headers-more-nginx-module'],
+    [http_srcache => 'srcache-nginx-module'],
     [http_array_var => 'array-var-nginx-module'],
     [http_memc => 'memc-nginx-module'],
     [http_redis2 => 'redis2-nginx-module'],
     [http_redis => 'redis-nginx-module'],
+    [http_upload => 'ngx_upload'],
+    [http_rtmp => 'ngx_rtmp'],
+    [http_hls => 'ngx_hls'],
     #[http_upstream_keepalive => 'upstream-keepalive-nginx-module'],
     [http_auth_request => 'auth-request-nginx-module'],
     [http_rds_json => 'rds-json-nginx-module'],
@@ -242,11 +245,6 @@ for my $opt (@ARGV) {
 
         my $path = File::Spec->rel2abs($1);
         push @ngx_opts, "--with-openssl=$path";
-
-    } elsif ($opt =~ /^--with-pcre=(.*)/) {
-
-        my $path = File::Spec->rel2abs($1);
-        push @ngx_opts, "--with-pcre=$path";
 
     } elsif ($opt =~ /^--\w.*/) {
         push @ngx_opts, $opt;
