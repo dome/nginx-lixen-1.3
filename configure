@@ -779,7 +779,7 @@ _EOC_
                 "\$(MAKE) install$extra_opts";
         }
 
-        for my $key (qw(dns memcached redis mysql string upload)) {
+        for my $key (qw(dns memcached http mongol redis mysql string upload)) {
             unless ($opts->{"no_lua_resty_$key"}) {
                 my $name = "lua-resty-$key";
                 my $dir = auto_complete $name;
